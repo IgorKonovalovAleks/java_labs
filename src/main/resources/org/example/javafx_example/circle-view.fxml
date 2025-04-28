@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.shape.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="620.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javafx_example.CircleView">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="803.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.javafx_example.CircleView">
    <children>
       <Button layoutX="14.0" layoutY="361.0" mnemonicParsing="false" onAction="#start" text="Начать" />
       <Button layoutX="76.0" layoutY="361.0" mnemonicParsing="false" onAction="#stop" text="Остановить игру" />
@@ -14,8 +14,10 @@
             <Line endX="29.0" endY="-127.0" layoutX="311.0" layoutY="127.0" startX="29.0" startY="211.0" />
             <Circle id="target2" fx:id="target2" fill="DODGERBLUE" layoutX="434.0" layoutY="166.0" radius="16.0" stroke="BLACK" strokeType="INSIDE" />
             <Circle id="target1" fx:id="target1" fill="DODGERBLUE" layoutX="341.0" layoutY="169.0" radius="32.0" stroke="BLACK" strokeType="INSIDE" />
-            <Polygon fill="#ff1f1f" layoutX="64.0" layoutY="182.0" points="-64.0, -182.0, -64.0, 162.0, -44.0, 1.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle id="bullet" fx:id="bullet" fill="#ff1f1f" layoutX="30.0" layoutY="182.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#ff1f1f" layoutX="64.0" layoutY="182.0" points="-64.0, -182.0, -64.0, 1.0, -44.0, -87.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle id="bullet" fx:id="bullet" fill="#ff1f1f" layoutX="30.0" layoutY="95.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
+            <Polygon fill="#ff1f1f" layoutX="74.0" layoutY="192.0" points="-74.0, -19.0, -74.0, 152.0, -53.0, 61.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle id="bullet" fx:id="bullet1" fill="#ff1f1f" layoutX="30.0" layoutY="255.0" radius="10.0" stroke="BLACK" strokeType="INSIDE" />
          </children>
       </AnchorPane>
       <Label layoutX="502.0" layoutY="14.0" text="Счет игрока" />
@@ -24,5 +26,9 @@
       <Label id="shotsLabel" fx:id="shootCount" layoutX="502.0" layoutY="97.0" text="0" />
       <Button fx:id="pause" layoutX="192.0" layoutY="361.0" mnemonicParsing="false" onAction="#pause" text="Пауза" />
       <Button fx:id="contin" layoutX="255.0" layoutY="361.0" mnemonicParsing="false" onAction="#cont" text="Продолжить" />
+      <Button fx:id="connectButton" layoutX="350.0" layoutY="361.0" mnemonicParsing="false" onAction="#connect" text="Подключиться" />
+      <TextField fx:id="nick" layoutX="457.0" layoutY="361.0" />
+      <Button fx:id="ready" layoutX="506.0" layoutY="326.0" mnemonicParsing="false" text="Готов" />
+      <VBox fx:id="right" layoutX="609.0" layoutY="23.0" prefHeight="200.0" prefWidth="100.0" />
    </children>
 </AnchorPane>
