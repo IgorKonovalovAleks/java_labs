@@ -1,5 +1,6 @@
 package org.example.javafx_example;
 
+import org.example.javafx_example.server.PlayerStatistic;
 
 public class PlayerInfo {
     int shots;

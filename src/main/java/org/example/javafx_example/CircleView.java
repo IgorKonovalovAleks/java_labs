@@ -8,8 +8,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import org.example.javafx_example.server.PlayerStatistic;
+
 import java.util.List;
 
 import java.io.IOException;
@@ -29,12 +30,6 @@ public class CircleView {
 
     @FXML
     Circle target2;
-
-    @FXML
-    Label score;
-
-    @FXML
-    Label shootCount;
 
     @FXML
     AnchorPane mainPane;
@@ -74,6 +69,11 @@ public class CircleView {
         controlPanel = new PlayerInfoControlPanel();
 
 
+    }
+
+    @FXML
+    void get_leaderboard() {
+        model.cls.send_signal(new SignalMsg(MsgAction.GET_LEADERBOARD, true));
     }
 
     public void update_data(PlayerInfo[] infos) {
@@ -136,47 +136,47 @@ public class CircleView {
             System.out.println(e.toString());
         }
     }
+    /*
+        void next(){
+            double width = mainPane.getWidth();
+            double height = mainPane.getHeight();
+            double y = bullet.getLayoutY();
+            double x1 = target1.getLayoutX();
+            double x2 = target2.getLayoutX();
+            double x = bullet.getLayoutX();
+            double y1 = target1.getLayoutY();
+            double y2 = target2.getLayoutY();
+            if (shooting) x += 4;
+            y1 += speed1;
+            y2 += speed2;
 
-    void next(){
-        double width = mainPane.getWidth();
-        double height = mainPane.getHeight();
-        double y = bullet.getLayoutY();
-        double x1 = target1.getLayoutX();
-        double x2 = target2.getLayoutX();
-        double x = bullet.getLayoutX();
-        double y1 = target1.getLayoutY();
-        double y2 = target2.getLayoutY();
-        if (shooting) x += 4;
-        y1 += speed1;
-        y2 += speed2;
-
-        if (x > width - 15) {
-            x = 30;
-            shooting = false;
-        }
-        if (y1 > height - 35 || y1 < 35)
-            speed1 *= -1;
-        if (y2 > height - 20 || y2 < 20)
-            speed2 *= -1;
-
-        if (shooting) {
-            if ((x - x1) * (x - x1) + (y - y1) * (y - y1) < (42 * 42)){
-                shooting = false;
+            if (x > width - 15) {
                 x = 30;
-                score.setText(Integer.toString(Integer.parseInt(score.getText()) + 1));
-            }
-            if ((x - x2) * (x - x2) + (y - y2) * (y - y2) < (26 * 26)){
                 shooting = false;
-                x = 30;
-                score.setText(Integer.toString(Integer.parseInt(score.getText()) + 2));
             }
+            if (y1 > height - 35 || y1 < 35)
+                speed1 *= -1;
+            if (y2 > height - 20 || y2 < 20)
+                speed2 *= -1;
+
+            if (shooting) {
+                if ((x - x1) * (x - x1) + (y - y1) * (y - y1) < (42 * 42)){
+                    shooting = false;
+                    x = 30;
+                    score.setText(Integer.toString(Integer.parseInt(score.getText()) + 1));
+                }
+                if ((x - x2) * (x - x2) + (y - y2) * (y - y2) < (26 * 26)){
+                    shooting = false;
+                    x = 30;
+                    score.setText(Integer.toString(Integer.parseInt(score.getText()) + 2));
+                }
+            }
+
+            bullet.setLayoutX(x);
+            target1.setLayoutY(y1);
+            target2.setLayoutY(y2);
         }
-
-        bullet.setLayoutX(x);
-        target1.setLayoutY(y1);
-        target2.setLayoutY(y2);
-    }
-
+    */
     @FXML
     void start(){
 //        circle.setLayoutX(0);
@@ -224,10 +224,15 @@ public class CircleView {
         {
             play = false;
             shooting = false;
-            score.setText("0");
-            shootCount.setText("0");
             t.interrupt();
         }
+    }
+
+    public void show_winner(PlayerInfo info) {
+        Platform.runLater( () -> {
+            controlPanel.update_num_wins(info);
+            WinnerWindow.show(info);
+        });
     }
 
     @FXML
@@ -243,7 +248,7 @@ public class CircleView {
         synchronized (this)
         {
             if(t != null)
-               this.notifyAll();
+                this.notifyAll();
         }
     }
 

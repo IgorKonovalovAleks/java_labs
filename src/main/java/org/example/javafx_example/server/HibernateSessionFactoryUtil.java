@@ -1,4 +1,4 @@
-package org.example.javafx_example;
+package org.example.javafx_example.server;
 
 import org.example.javafx_example.PlayerInfo;
 import org.hibernate.SessionFactory;

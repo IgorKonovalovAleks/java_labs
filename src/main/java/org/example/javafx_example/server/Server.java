@@ -1,11 +1,13 @@
-package org.example.javafx_example;
+package org.example.javafx_example.server;
 
-import org.example.javafx_example.*;
+import org.example.javafx_example.AuthMsg;
+import org.example.javafx_example.AuthResponse;
+import org.example.javafx_example.Player;
+import org.hibernate.Session;
 import java.io.IOException;
 import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
-import org.hibernate.Session;
 
 public class Server {
     Model model = BModel.get_model();
@@ -34,17 +36,13 @@ public class Server {
         });
 
         try {
-            System.out.println("asd");
             ip = InetAddress.getLocalHost();
-            System.out.println("asd");
             ss = new ServerSocket(port, 0, ip);
-            System.out.println("asd");
 
             while (true) {
-                System.out.println("asd");
                 cs = ss.accept();
                 System.out.println("Client connect - " + cs.getPort());
-                System.out.println("asd");
+
                 SocketServer server_socket = new SocketServer(cs);
                 AuthMsg msg = server_socket.read_auth_msg();
                 String result_text = "";
@@ -117,6 +115,12 @@ public class Server {
                         if (player != null && player.get_arrow().is_active() && target.check_hit(player.get_arrow())) {
                             player.get_arrow().remove();
                             player.get_info().increase_score(target.get_points_for_hit());
+                            if (player.get_info().get_score() >= 3) {
+                                player.increase_num_wins();
+                                DB.increase_num_wins(player.get_stat());
+                                model.send_winner(player.get_info());
+                                stop_game();
+                            }
                         }
                     }
                 }

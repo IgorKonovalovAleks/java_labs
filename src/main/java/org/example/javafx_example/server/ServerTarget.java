@@ -1,4 +1,4 @@
-package org.example.javafx_example;
+package org.example.javafx_example.server;
 
 public class ServerTarget {
     static double field_height = 346;

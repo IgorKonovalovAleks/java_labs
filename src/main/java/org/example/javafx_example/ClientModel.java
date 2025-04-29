@@ -1,6 +1,6 @@
 package org.example.javafx_example;
 
-import org.example.javafx_example.ArrowData;
+import org.example.javafx_example.server.PlayerStatistic;
 
 import java.util.List;
 

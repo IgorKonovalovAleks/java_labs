@@ -1,4 +1,4 @@
-package org.example.javafx_example;
+package org.example.javafx_example.server;
 
 public class BModel {
     static Model m = new Model();

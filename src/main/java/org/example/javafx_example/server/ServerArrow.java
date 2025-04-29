@@ -1,4 +1,4 @@
-package org.example.javafx_example;
+package org.example.javafx_example.server;
 
 public class ServerArrow {
     static double field_width = 481;

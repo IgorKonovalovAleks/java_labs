@@ -9,7 +9,7 @@ import javafx.scene.layout.FlowPane;
 import java.util.List;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.example.javafx_example.PlayerStatistic;
+import org.example.javafx_example.server.PlayerStatistic;
 
 public class LeaderboardWindow {
     Stage window;

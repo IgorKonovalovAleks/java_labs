@@ -1,6 +1,8 @@
-package org.example.javafx_example;
+package org.example.javafx_example.server;
 
-import java.util.ArrayList;
+import org.example.javafx_example.ArrowData;
+import org.example.javafx_example.Player;
+import org.example.javafx_example.PlayerInfo;
 
 import java.util.HashMap;
 import java.util.Objects;

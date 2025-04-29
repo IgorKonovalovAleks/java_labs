@@ -15,4 +15,6 @@ module org.example.javafx_example {
 
     opens org.example.javafx_example to javafx.fxml, com.google.gson;
     exports org.example.javafx_example;
+    exports org.example.javafx_example.server;
+    opens org.example.javafx_example.server to com.google.gson, javafx.fxml;
 }

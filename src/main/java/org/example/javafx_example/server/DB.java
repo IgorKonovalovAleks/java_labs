@@ -1,12 +1,8 @@
-package org.example.javafx_example;
+package org.example.javafx_example.server;
 
-import org.example.javafx_example.PlayerInfo;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.From;
 import java.util.List;
 
 public class DB {

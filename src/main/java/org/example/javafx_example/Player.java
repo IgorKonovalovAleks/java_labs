@@ -1,5 +1,9 @@
 package org.example.javafx_example;
 
+import org.example.javafx_example.server.PlayerStatistic;
+import org.example.javafx_example.server.ServerArrow;
+import org.example.javafx_example.server.SocketServer;
+
 public class Player {
     SocketServer socket;
     boolean ready_status;
